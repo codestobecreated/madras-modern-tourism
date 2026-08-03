@@ -1,0 +1,1489 @@
+
+      /* ================================================
+       PREMIUM NAVBAR OVERRIDES
+       Madras Modern Tourism LLC – Redesign
+       ================================================ */
+
+      /* ── HEADER CONTAINER ────────────────────────── */
+
+      header .header-main-wrapper {
+        padding: 0 !important;
+      }
+
+      header .elementor-element-dc82d92 {
+        background-color: #ffffff !important;
+        padding: 8px 2% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 24px !important;
+        min-height: auto !important; /* Content dictates height */
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      /* ── LOGO ─────────────────────────────────────── */
+      header .elementor-element-10df061 {
+        flex: 0 0 auto !important;
+        width: 220px !important;
+        min-width: 220px !important;
+        max-width: 220px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        margin-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      header .gsc-logo,
+      header .gva-element-gva-logo,
+      header .gva-element,
+      header .elementor-widget-container {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+      }
+      header .gsc-logo a.site-branding-logo {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        line-height: 0 !important;
+      }
+      header .gsc-logo img {
+        width: auto !important;
+        height: 130px !important; /* Increased from 100px → 130px */
+        max-height: 130px !important;
+        max-width: 210px !important;
+        object-fit: contain !important;
+        object-position: left center !important;
+        display: block !important;
+        vertical-align: middle !important;
+      }
+
+      /* ── PILL CONTAINER ───────────────────────────── */
+      @media (min-width: 1200px) {
+        header .elementor-element-d5999dd {
+          background-color: #ffffff !important;
+          border-radius: 50px !important;
+          box-shadow: 0px 12px 35px rgba(30, 42, 68, 0.05) !important; /* Premium soft shadow */
+          border: 1px solid rgba(30, 42, 68, 0.03) !important;
+          padding: 0 16px 0 32px !important; /* Spacing */
+          display: flex !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          height: 90px !important;
+          min-height: 90px !important;
+          flex: 1 1 auto !important;
+          max-width: none !important;
+          margin-left: 30px !important;
+          transition:
+            box-shadow 0.3s ease,
+            border-color 0.3s ease !important;
+        }
+        header .elementor-element-d5999dd:hover {
+          box-shadow: 0px 16px 45px rgba(30, 42, 68, 0.08) !important;
+          border-color: rgba(30, 42, 68, 0.06) !important;
+        }
+
+        /* Inner nav container - menu list center */
+        header .elementor-element-01d317e {
+          flex-grow: 1 !important;
+          display: flex !important;
+          justify-content: center !important; /* Centers the menu list */
+          align-items: center !important;
+          min-width: 0 !important;
+        }
+
+        /* ── NAVIGATION MENU ──────────────────────────── */
+        header .gva-nav-menu {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          list-style: none !important;
+          flex-wrap: nowrap !important;
+          gap: 8px !important; /* Comfortable spacing */
+        }
+        header .gva-nav-menu > li {
+          padding: 0 !important;
+          margin: 0 !important;
+          position: relative !important;
+        }
+        header .gva-nav-menu > li > a {
+          font-family: "Inter", "Plus Jakarta Sans", sans-serif !important;
+          font-weight: 500 !important;
+          font-size: 15.5px !important;
+          color: #1e2a44 !important; /* Navy color for menu items */
+          text-decoration: none !important;
+          padding: 10px 14px !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          transition: color 0.25s ease !important;
+          white-space: nowrap !important;
+          background: none !important;
+        }
+        header .gva-nav-menu > li > a:hover {
+          color: #f9a826 !important; /* Orange on hover */
+          background: none !important;
+        }
+
+        /* Active / current page link: Home highlighted brand orange */
+        header .gva-nav-menu > li.current-menu-item > a,
+        header .gva-nav-menu > li.current-menu-parent > a,
+        header .gva-nav-menu > li.current-menu-ancestor > a {
+          color: #f9a826 !important; /* brand orange */
+          background: none !important;
+        }
+
+        /* ── DROPDOWN CHEVRON (Font Awesome angle-down) ── */
+        /* 1. Zero out Bootstrap's default .caret triangle */
+        header .gva-nav-menu .caret {
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 14px !important;
+          height: 14px !important;
+          margin-left: 4px !important;
+          vertical-align: middle !important;
+          /* Kill Bootstrap triangle */
+          border: none !important;
+          border-top: none !important;
+          border-right: none !important;
+          border-bottom: none !important;
+          border-left: none !important;
+          border-width: 0 !important;
+          background: none !important;
+          font-size: 0 !important; /* hide any text */
+          overflow: visible !important;
+          position: relative !important;
+          flex-shrink: 0 !important;
+          transition: transform 0.25s ease !important;
+        }
+        /* 2. Draw Font Awesome angle-down via ::after */
+        header .gva-nav-menu .caret::after {
+          content: '\f107' !important; /* fa-angle-down */
+          font-family: 'Font Awesome 5 Free' !important;
+          font-weight: 900 !important;
+          font-style: normal !important;
+          font-size: 13px !important;
+          line-height: 1 !important;
+          color: #1e2a44 !important;
+          display: block !important;
+          transition: color 0.2s ease, transform 0.2s ease !important;
+        }
+        /* 3. Orange on hover */
+        header .gva-nav-menu > li > a:hover .caret::after {
+          color: #f9a826 !important;
+        }
+        /* 4. Active menu orange */
+        header .gva-nav-menu > li.current-menu-item > a .caret::after,
+        header .gva-nav-menu > li.current-menu-parent > a .caret::after,
+        header .gva-nav-menu > li.current-menu-ancestor > a .caret::after {
+          color: #f9a826 !important;
+        }
+        /* Rotate up when submenu is open */
+        header .gva-nav-menu > li.menu-open > a .caret::after,
+        header .gva-nav-menu > li:hover > a .caret::after {
+          top: 3px !important;
+        }
+
+        /* ── ACTIONS AREA (right side algin) ──────────── */
+        header .elementor-element-6132e4e {
+          display: flex !important;
+          align-items: center !important;
+          gap: 0 !important;
+          flex-shrink: 0 !important;
+          margin-left: auto !important; /* Push actions to far right */
+        }
+
+        /* ── LANGUAGE SELECTOR ───────────────────────── */
+        .custom-language-selector {
+          display: flex !important;
+          align-items: center !important;
+          gap: 6px !important;
+          color: #1e2a44 !important;
+          font-family: "Inter", sans-serif !important;
+          font-weight: 500 !important;
+          font-size: 15px !important;
+          cursor: pointer !important;
+          transition: color 0.2s ease !important;
+          padding: 10px 12px !important;
+          user-select: none !important;
+        }
+        .custom-language-selector:hover {
+          color: #f9a826 !important;
+        }
+        .custom-language-selector .globe-icon {
+          font-size: 15px !important;
+        }
+        .custom-language-selector .chevron-icon {
+          font-size: 10px !important;
+          opacity: 0.7 !important;
+        }
+
+        /* ── VERTICAL DIVIDER ────────────────────────── */
+        .custom-nav-divider {
+          width: 1px !important;
+          height: 28px !important;
+          background-color: rgba(30, 42, 68, 0.12) !important;
+          margin: 0 15px !important;
+        }
+
+        /* ── CTA BUTTON (Start Booking) ───────────────── */
+        header .elementor-element-406535f .elementor-button,
+        header .elementor-element-406535f a.elementor-button {
+          background: #f9a826 !important;
+          color: #ffffff !important;
+          border-radius: 999px !important;
+          padding: 14px 28px !important;
+          font-family: "Inter", sans-serif !important;
+          font-weight: 600 !important;
+          font-size: 14.5px !important;
+          text-transform: none !important;
+          box-shadow: 0px 6px 18px rgba(249, 168, 38, 0.2) !important;
+          transition: all 0.25s ease !important;
+          border: none !important;
+          white-space: nowrap !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          text-decoration: none !important;
+        }
+        header .elementor-element-406535f .elementor-button:hover,
+        header .elementor-element-406535f a.elementor-button:hover {
+          background: #e2921c !important; /* Slightly darker orange */
+          box-shadow: 0px 8px 22px rgba(249, 168, 38, 0.3) !important;
+          transform: translateY(-1px) !important;
+        }
+      }
+
+      /* ── PREVENT FLEX WRAP AND GENERAL OVERRIDES ──── */
+      header .elementor-element-dc82d92 {
+        flex-wrap: nowrap !important;
+        overflow: visible !important;
+      }
+      header .elementor-element-d5999dd {
+        flex-wrap: nowrap !important;
+        overflow: visible !important;
+      }
+
+      /* ================================================
+       RESPONSIVE – TABLET & BELOW (≤ 1199px)
+       ================================================ */
+      @media (max-width: 1199px) {
+        /* ── Header container ─────────────────────── */
+        header .elementor-element-dc82d92 {
+          padding: 10px 4% !important;
+          height: auto !important;
+          min-height: auto !important;
+        }
+
+        /* ── Hide desktop nav, show mobile hamburger ─ */
+        header .nav-one__default,
+        header .nav-screen__default {
+          display: none !important;
+        }
+        header .nav-one__mobile,
+        header .nav-screen__mobile {
+          display: flex !important;
+          align-items: center !important;
+        }
+
+        /* ── Pill container: flatten for mobile ────── */
+        header .elementor-element-d5999dd {
+          background-color: transparent !important;
+          box-shadow: none !important;
+          border: none !important;
+          border-radius: 0 !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          height: auto !important;
+          min-height: auto !important;
+          flex: 0 0 auto !important;
+        }
+
+        /* ── Hide CTA button on tablet ─────────────── */
+        header .elementor-element-406535f {
+          display: none !important;
+        }
+
+        /* ── Hide divider & language selector ──────── */
+        .custom-language-selector,
+        .custom-nav-divider {
+          display: none !important;
+        }
+
+        /* ── Hamburger icon styling ────────────────── */
+        header .canvas-menu.gva-offcanvas a.dropdown-toggle {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 44px !important;
+          height: 44px !important;
+          padding: 0 !important;
+          text-decoration: none !important;
+        }
+        header .menu-bar,
+        header .menu-bar-close {
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+          gap: 5px !important;
+          width: 24px !important;
+          height: 24px !important;
+        }
+        header .menu-bar span,
+        header .menu-bar-close span {
+          display: block !important;
+          width: 100% !important;
+          height: 2px !important;
+          background-color: #1e2a44 !important;
+          border-radius: 2px !important;
+          transition: all 0.3s ease !important;
+        }
+
+        /* ── Logo: slightly smaller on tablet ──────── */
+        header .elementor-element-10df061 {
+          width: 180px !important;
+          min-width: 180px !important;
+          max-width: 180px !important;
+        }
+        header .gsc-logo img {
+          height: 100px !important;
+          max-height: 100px !important;
+        }
+
+        /* ── Off-canvas mobile menu ────────────────── */
+        .canvas-mobile {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          z-index: 9999 !important;
+          pointer-events: none !important;
+          visibility: hidden !important;
+        }
+        .canvas-mobile.active,
+        .gva-offcanvas-content.mobile.active,
+        .canvas-mobile.show {
+          pointer-events: auto !important;
+          visibility: visible !important;
+        }
+
+        .gva-offcanvas-content.mobile {
+          position: fixed !important;
+          top: 0 !important;
+          right: 0 !important;
+          width: 300px !important;
+          max-width: 85vw !important;
+          height: 100% !important;
+          background-color: #ffffff !important;
+          box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15) !important;
+          z-index: 10000 !important;
+          transform: translateX(100%) !important;
+          transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          overflow-y: auto !important;
+          padding: 0 !important;
+          visibility: hidden !important;
+          pointer-events: none !important;
+        }
+        .gva-offcanvas-content.mobile.active,
+        .gva-offcanvas-content.mobile.show,
+        .canvas-mobile.active .gva-offcanvas-content.mobile {
+          transform: translateX(0) !important;
+          visibility: visible !important;
+          pointer-events: auto !important;
+        }
+
+        /* Backdrop overlay */
+        .gva-offcanvas-content.mobile .first-layer,
+        .canvas-mobile.active .first-layer {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          background: rgba(0, 0, 0, 0.4) !important;
+          z-index: -1 !important;
+          opacity: 1 !important;
+          transition: opacity 0.3s ease !important;
+        }
+
+        /* Top bar with logo + close */
+        .gva-offcanvas-content.mobile .top-canvas {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          padding: 16px 20px !important;
+          border-bottom: 1px solid rgba(30, 42, 68, 0.08) !important;
+        }
+        .gva-offcanvas-content.mobile .top-canvas .logo-mm img {
+          height: 50px !important;
+          width: auto !important;
+        }
+        .gva-offcanvas-content.mobile .top-canvas .control-close-mm {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 40px !important;
+          height: 40px !important;
+        }
+        .gva-offcanvas-content.mobile .top-canvas .menu-bar-close span {
+          background-color: #1e2a44 !important;
+        }
+
+        /* Mobile menu links */
+        .gva-offcanvas-content.mobile .gva-mobile-menu,
+        .gva-offcanvas-content.mobile .wp-sidebar {
+          padding: 12px 0 !important;
+        }
+        .gva-offcanvas-content.mobile .gva-mobile-menu > li,
+        .gva-offcanvas-content.mobile .wp-sidebar li {
+          list-style: none !important;
+          margin: 0 !important;
+        }
+        .gva-offcanvas-content.mobile .gva-mobile-menu > li > a,
+        .gva-offcanvas-content.mobile .wp-sidebar li > a {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          padding: 14px 20px !important;
+          font-family: "Inter", "Plus Jakarta Sans", sans-serif !important;
+          font-weight: 500 !important;
+          font-size: 15px !important;
+          color: #1e2a44 !important;
+          text-decoration: none !important;
+          border-bottom: 1px solid rgba(30, 42, 68, 0.05) !important;
+          transition: background 0.2s ease, color 0.2s ease !important;
+        }
+        .gva-offcanvas-content.mobile .gva-mobile-menu > li > a:hover,
+        .gva-offcanvas-content.mobile .wp-sidebar li > a:hover {
+          background-color: rgba(249, 168, 38, 0.06) !important;
+          color: #f9a826 !important;
+        }
+
+        /* Mobile submenu */
+        .gva-offcanvas-content.mobile .submenu-inner {
+          list-style: none !important;
+          padding: 0 0 0 20px !important;
+          margin: 0 !important;
+          background-color: rgba(249, 168, 38, 0.03) !important;
+        }
+        .gva-offcanvas-content.mobile .submenu-inner li a {
+          padding: 12px 20px !important;
+          font-size: 14px !important;
+        }
+
+        /* Mobile caret (toggle arrow) */
+        .gva-offcanvas-content.mobile .caret {
+          width: 8px !important;
+          height: 8px !important;
+          border-right: 2px solid #1e2a44 !important;
+          border-bottom: 2px solid #1e2a44 !important;
+          transform: rotate(45deg) !important;
+          transition: transform 0.25s ease !important;
+        }
+        .gva-offcanvas-content.mobile .has-sub.open > a .caret,
+        .gva-offcanvas-content.mobile li.active .caret {
+          transform: rotate(-135deg) !important;
+        }
+
+        /* Mobile menu footer */
+        .gva-offcanvas-content.mobile .mobile-menu-footer {
+          padding: 20px !important;
+          border-top: 1px solid rgba(30, 42, 68, 0.08) !important;
+        }
+      }
+
+      /* ================================================
+       RESPONSIVE – PHONE (≤ 768px)
+       ================================================ */
+      @media (max-width: 768px) {
+        /* ── Header: tighter spacing ───────────────── */
+        header .elementor-element-dc82d92 {
+          padding: 8px 4% !important;
+        }
+
+        /* ── Logo: smaller on phone ────────────────── */
+        header .elementor-element-10df061 {
+          width: 140px !important;
+          min-width: 140px !important;
+          max-width: 140px !important;
+        }
+        header .gsc-logo img {
+          height: 70px !important;
+          max-height: 70px !important;
+        }
+
+        /* ── Off-canvas: full width on small screens ── */
+        .gva-offcanvas-content.mobile {
+          width: 85vw !important;
+        }
+      }
+
+      /* ── MASK IMAGE OVERRIDE FOR ABOUT-SIX SECTION ── */
+      .about-six__image .content-inner {
+        -webkit-mask-image: url("/mask-img.png") !important;
+        mask-image: url("/mask-img.png") !important;
+      }
+
+      /* ================================================
+       PAGE CONTENT TOP SPACING REDUCTION
+       Remove/reduce the gap between navbar and first section
+       on all pages (home, about, activities, contact, etc.)
+       ================================================ */
+
+      /* Main page content wrapper */
+      #page-content,
+      #wp-main-content.main-page,
+      .main-page,
+      .main-page-content,
+      .content-page,
+      #wp-content.wp-content {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+      }
+
+      /* Single page template top spacing */
+      .single-page-template,
+      .single-content-inner,
+      .container-full.single-content-inner {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+      }
+
+      /* Elementor first section top padding override – removes default section top gap */
+      .wrapper-page > #page-content > section:first-child,
+      .wrapper-page > #page-content > .main-page:first-child {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+      }
+
+      /* ================================================
+       HERO SEARCH BAR STYLING (PERFECT UNIFORM HEIGHT)
+       ================================================ */
+
+      .wpte-trip-sfilter-wrapper {
+        background: #ffffff !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08) !important;
+        border: 1px solid rgba(0, 0, 0, 0.06) !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        height: 80px !important;
+      }
+
+      .wpte-trip__search-fields.horizontal {
+        display: flex !important;
+        align-items: stretch !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      /* Individual filter input field container */
+      .wpte-trip__adv-field.wpte__select-field {
+        flex: 1 1 0% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        padding: 0 45px 0 24px !important;
+        position: relative !important;
+        border-right: 1px solid #eef0f4 !important;
+        margin: 0 !important;
+        background: #ffffff !important;
+        cursor: pointer !important;
+        height: 80px !important;
+        box-sizing: border-box !important;
+      }
+
+      .wpte-trip__adv-field.wpte__select-field:first-child {
+        border-radius: 16px 0 0 16px !important;
+      }
+
+      .wpte-trip__adv-field.wpte__select-field:hover {
+        background: #fafbfc !important;
+      }
+
+      /* Label Text (Location, Type, Duration, Price) */
+      .wpte-trip__adv-field .title_field {
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        color: #94a3b8 !important; /* Soft grey label */
+        margin-bottom: 2px !important;
+        line-height: 1.2 !important;
+        text-transform: capitalize !important;
+        letter-spacing: 0.2px !important;
+      }
+
+      /* Main Input & Placeholder Text */
+      .wpte-trip__adv-field .wpte__input {
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: #1e293b !important; /* Dark bold text */
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        height: auto !important;
+        box-shadow: none !important;
+        outline: none !important;
+        width: 100% !important;
+        cursor: pointer !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+      }
+
+      .wpte-trip__adv-field .wpte__input::placeholder {
+        color: #1e293b !important;
+        font-weight: 700 !important;
+        opacity: 1 !important;
+      }
+
+      /* Orange Icon (Right side of cell) */
+      .wpte-trip__adv-field .icon {
+        position: absolute !important;
+        right: 18px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        color: #f9a826 !important; /* Orange accent */
+        font-size: 20px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        pointer-events: none !important;
+      }
+
+      .wpte-trip__adv-field .icon i {
+        color: #f9a826 !important;
+        font-size: 20px !important;
+      }
+
+      /* Submit / Search Button Field */
+      .wpte-trip__submit-field {
+        flex: 0 0 170px !important;
+        display: flex !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 80px !important;
+      }
+
+      .wpte-trip__search-submit {
+        width: 100% !important;
+        height: 100% !important;
+        background: #f9a826 !important; /* Premium orange fill */
+        color: #ffffff !important;
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: 16.5px !important;
+        font-weight: 700 !important;
+        border: none !important;
+        border-radius: 0 16px 16px 0 !important;
+        cursor: pointer !important;
+        transition: all 0.25s ease !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: none !important;
+        letter-spacing: 0.3px !important;
+        margin: 0 !important;
+      }
+
+      .wpte-trip__search-submit:hover {
+        background: #e0941d !important;
+        color: #ffffff !important;
+      }
+
+      /* ================================================
+       DROPDOWN POPUP MENU STYLING (CLICK-ONLY TRIGGER)
+       ================================================ */
+
+      /* Force all parent containers to allow overflow so popups float freely */
+      .elementor-element-9b98051,
+      .elementor-element-9b98051 .e-con-inner,
+      .elementor-widget-wptravelengine-trip-search,
+      .elementor-widget-wptravelengine-trip-search .elementor-widget-container,
+      .wpte-gblock-wrapper,
+      .wpte-elementor-widget,
+      .wpte-trip-sfilter-wrapper,
+      .wpte-trip__search-fields,
+      .wpte-trip__adv-field {
+        overflow: visible !important;
+        clip-path: none !important;
+      }
+
+      .wpte-trip__adv-field .wpte__select-options {
+        display: none;
+        position: absolute !important;
+        top: calc(100% + 8px) !important;
+        left: 0 !important;
+        width: 230px !important;
+        min-width: 230px !important;
+        max-height: 360px !important;
+        overflow-y: auto !important;
+        background: #ffffff !important;
+        border-radius: 12px !important;
+        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12) !important;
+        border: 1px solid #e2e8f0 !important;
+        padding: 14px 18px !important;
+        z-index: 999999 !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Scrollbar styling for dropdown */
+      .wpte-trip__adv-field .wpte__select-options::-webkit-scrollbar {
+        width: 4px;
+      }
+      .wpte-trip__adv-field .wpte__select-options::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+
+      /* ONLY ACTIVE CLASS (CLICK TRIGGER) DISPLAYS POPUP - NO HOVER OPEN */
+      .wpte-trip__adv-field.active .wpte__select-options {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+      }
+
+      .wpte-trip__adv-field .wpte__select-options ul {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .wpte-trip__adv-field .wpte__select-options li {
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: #1e293b !important;
+        padding: 7px 0 !important;
+        cursor: pointer !important;
+        transition: color 0.15s ease !important;
+        display: block !important;
+      }
+
+      .wpte-trip__adv-field .wpte__select-options li:hover {
+        color: #f9a826 !important;
+      }
+
+      /* Sub-locations (Florence, Rome, Venice indented) */
+      .wpte-trip__adv-field .wpte__select-options li ul {
+        margin-top: 4px !important;
+        margin-left: 20px !important;
+        border-left: none !important;
+      }
+
+      .wpte-trip__adv-field .wpte__select-options li ul li {
+        font-size: 14.5px !important;
+        font-weight: 500 !important;
+        color: #64748b !important;
+        padding: 5px 0 !important;
+      }
+
+      .wpte-trip__adv-field .wpte__select-options li ul li:hover {
+        color: #f9a826 !important;
+      }
+
+      /* ================================================
+       DESTINATION CAROUSEL (AUTO-SLIDE) STYLING
+       ================================================ */
+
+      /* ================================================
+       DESTINATION LIST SECTION — LAYOUT & CAROUSEL
+       Scoped to .dest-list-section (home page only)
+       ================================================ */
+
+      .elementor-16 .elementor-element.elementor-element-6de3ad4.dest-list-section,
+      .dest-list-section {
+        --dest-card-width: 220px;
+        --dest-card-gap: 24px;
+        --dest-arch-radius: 110px;
+        --dest-section-max: 1320px;
+        --display: flex !important;
+        --flex-direction: row !important;
+        --flex-wrap: nowrap !important;
+        --align-items: center !important;
+        position: relative !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: clamp(28px, 4vw, 56px) !important;
+        max-width: var(--dest-section-max) !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: clamp(56px, 7vw, 88px) clamp(20px, 4vw, 48px) clamp(48px, 6vw, 72px) !important;
+        overflow: hidden !important;
+        background: #ffffff !important;
+      }
+
+      /* Left column — heading / CTA */
+      .elementor-16 .dest-list-section > .dest-list-left,
+      .elementor-16 .dest-list-section > .elementor-element-11d7825,
+      .dest-list-section > .dest-list-left,
+      .dest-list-section > .elementor-element-11d7825 {
+        --width: auto !important;
+        --flex-direction: column !important;
+        flex: 0 1 36% !important;
+        max-width: 420px !important;
+        min-width: 0 !important;
+        width: auto !important;
+      }
+
+      /* Right column — destination carousel */
+      .elementor-16 .dest-list-section > .dest-list-right,
+      .elementor-16 .dest-list-section > .elementor-element-3baafca,
+      .dest-list-section > .dest-list-right,
+      .dest-list-section > .elementor-element-3baafca {
+        --width: auto !important;
+        flex: 1 1 64% !important;
+        min-width: 0 !important;
+        width: auto !important;
+        overflow: hidden !important;
+      }
+
+      /* Nested fallback if markup is still wrapped */
+      .dest-list-section > .elementor-element-11d7825 > .elementor-element-41d4f2f {
+        flex: 0 1 100% !important;
+        max-width: 420px !important;
+      }
+
+      .dest-list-section > .elementor-element-11d7825 > .elementor-element-3baafca {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+      }
+
+      .dest-list-section > .elementor-element-11d7825:has(> .elementor-element-3baafca) {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: clamp(28px, 4vw, 56px) !important;
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+      }
+
+      .dest-list-section .gsc-heading {
+        margin-bottom: 0 !important;
+      }
+
+      .dest-list-section .gsc-heading .content-inner {
+        max-width: 100% !important;
+      }
+
+      /* Tagline Pill Badge with SVG Airplane Icon */
+      .dest-list-section .gsc-heading .sub-title .tagline {
+        background: rgba(0, 82, 255, 0.06) !important;
+        border: 1px solid rgba(0, 82, 255, 0.18) !important;
+        color: #0052ff !important;
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: clamp(11px, 1.2vw, 12px) !important;
+        font-weight: 800 !important;
+        padding: 8px 20px !important;
+        border-radius: 50px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        letter-spacing: 0.8px !important;
+        text-transform: uppercase !important;
+        box-shadow: 0 2px 8px rgba(0, 82, 255, 0.06) !important;
+      }
+
+      .dest-list-section .gsc-heading .sub-title .tagline::before {
+        content: "" !important;
+        display: inline-block !important;
+        width: 16px !important;
+        height: 16px !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230052ff'%3E%3Cpath d='M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        background-size: contain !important;
+        margin-right: 4px !important;
+        flex-shrink: 0 !important;
+      }
+
+      /* Section Heading Title & Highlight Accent */
+      .dest-list-section .gsc-heading .title {
+        margin: 16px 0 0 !important;
+        position: relative !important;
+      }
+
+      .dest-list-section .gsc-heading .title span {
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: clamp(32px, 3.6vw, 48px) !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
+        line-height: 1.15 !important;
+        display: block !important;
+        letter-spacing: -0.6px !important;
+      }
+
+      .dest-list-section .dest-highlight-blue {
+        color: #0052ff !important;
+        display: inline !important;
+      }
+
+      .dest-list-section .dest-title-underline {
+        display: block !important;
+        width: 64px !important;
+        height: 5px !important;
+        background: #ff7a00 !important;
+        border-radius: 6px !important;
+        margin-top: 10px !important;
+      }
+
+      /* Section Sub-description */
+      .dest-list-section .gsc-heading .title-desc {
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: clamp(14px, 1.5vw, 15px) !important;
+        color: #64748b !important;
+        line-height: 1.65 !important;
+        margin-top: 20px !important;
+        margin-bottom: 28px !important;
+        max-width: 400px !important;
+      }
+
+      /* Discover More Orange Gradient CTA Button */
+      .dest-list-section .gsc-heading .heading-action .btn-theme,
+      .dest-list-section .gsc-heading .heading-action a.btn-cta {
+        background: linear-gradient(90deg, #ff7a00 0%, #ff5500 100%) !important;
+        color: #ffffff !important;
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        padding: 14px 34px !important;
+        border-radius: 50px !important;
+        box-shadow: 0 10px 24px rgba(255, 122, 0, 0.35) !important;
+        border: none !important;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-decoration: none !important;
+        gap: 8px !important;
+      }
+
+      .dest-list-section .gsc-heading .heading-action .btn-theme:hover,
+      .dest-list-section .gsc-heading .heading-action a.btn-cta:hover {
+        background: linear-gradient(90deg, #ff5500 0%, #e04400 100%) !important;
+        transform: translateY(-3px) !important;
+        box-shadow: 0 14px 30px rgba(255, 122, 0, 0.45) !important;
+      }
+
+      /* Left Flight Trail SVG Illustration */
+      .dest-list-section .dest-left-flight-trail {
+        margin-top: 28px !important;
+        opacity: 0.85 !important;
+      }
+
+      /* Carousel wrapper */
+      .dest-list-section .gsc-listings-banner-group,
+      .dest-list-section .swiper-slider-wrapper {
+        overflow: visible !important;
+        padding: 12px 4px 20px 4px !important;
+        position: relative !important;
+        width: 100% !important;
+      }
+
+      /* Fade hint on right edge (desktop) */
+      .dest-list-section .gsc-listings-banner-group::after {
+        display: none !important;
+      }
+
+      .dest-list-section .gsc-listings-banner-group .swiper-content-inner,
+      .dest-list-section .init-carousel-swiper.swiper {
+        overflow: visible !important;
+        width: 100% !important;
+      }
+
+      .dest-list-section .gsc-listings-banner-group .swiper-wrapper {
+        display: flex !important;
+        align-items: stretch !important;
+        will-change: transform !important;
+        transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+      }
+
+      .dest-list-section .gsc-listings-banner-group .swiper-slide,
+      .dest-list-section .gsc-listings-banner-group .dest-slide,
+      .dest-list-section .gsc-listings-banner-group .item {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        width: var(--dest-card-width, 240px) !important;
+        max-width: var(--dest-card-width, 240px) !important;
+        margin-right: var(--dest-card-gap, 24px) !important;
+        flex-shrink: 0 !important;
+        height: auto !important;
+      }
+
+      /* Floating Right Navigation Arrow Button */
+      .dest-list-section .dest-next-arrow-btn {
+        position: absolute !important;
+        right: -18px !important;
+        top: 44% !important;
+        transform: translateY(-50%) !important;
+        z-index: 30 !important;
+        width: 48px !important;
+        height: 48px !important;
+        border-radius: 50% !important;
+        background: #ffffff !important;
+        color: #0052ff !important;
+        border: 1px solid #f1f5f9 !important;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease !important;
+      }
+
+      .dest-list-section .dest-next-arrow-btn:hover {
+        transform: translateY(-50%) scale(1.1) !important;
+        box-shadow: 0 14px 30px rgba(0, 82, 255, 0.25) !important;
+        background: #ffffff !important;
+        color: #0044cc !important;
+      }
+
+      /* Carousel Dots Styling */
+      .dest-list-section .dest-carousel-dots {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        margin-top: 32px !important;
+      }
+
+      .dest-list-section .dest-carousel-dots button {
+        width: 10px !important;
+        height: 10px !important;
+        border-radius: 999px !important;
+        background: #cbd5e1 !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        padding: 0 !important;
+      }
+
+      .dest-list-section .dest-carousel-dots button.is-active {
+        width: 28px !important;
+        background: #0052ff !important;
+        border-radius: 10px !important;
+      }
+
+      /* ── DESTINATION CARD SYSTEM (Exact Reference Match) ── */
+
+      .dest-list-section .banner-three__single,
+      .dest-list-section div.banner-three__single {
+        background: #ffffff !important;
+        border: 1px solid #f1f5f9 !important;
+        border-radius: 28px !important;
+        overflow: hidden !important;
+        position: relative !important;
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease !important;
+        height: 100% !important;
+        box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06) !important;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+
+      .dest-list-section .banner-three__single::after {
+        display: none !important;
+      }
+
+      .dest-list-section .banner-three__single:hover {
+        transform: translateY(-8px) scale(1.02) !important;
+        box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12) !important;
+      }
+
+      /* Featured Active Card (Maldives / Blue State) */
+      .dest-list-section .banner-three__single--blue,
+      .dest-list-section div.banner-three__single.banner-three__single--blue {
+        background: linear-gradient(180deg, #0052ff 0%, #0044cc 100%) !important;
+        border: none !important;
+        box-shadow: 0 20px 45px rgba(0, 82, 255, 0.35) !important;
+      }
+
+      .dest-list-section .banner-three__single--blue:hover {
+        transform: translateY(-8px) scale(1.02) !important;
+        box-shadow: 0 28px 55px rgba(0, 82, 255, 0.45) !important;
+      }
+
+      .dest-list-section .banner-three__wrap {
+        background: transparent !important;
+        border-radius: inherit !important;
+        overflow: hidden !important;
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100% !important;
+      }
+
+      .dest-list-section .banner-three__overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        z-index: 5 !important;
+      }
+
+      /* Card Top Image & Wavy Mask */
+      .dest-list-section .banner-three__image,
+      .dest-list-section div.banner-three__image {
+        position: relative !important;
+        overflow: hidden !important;
+        height: 220px !important;
+        width: 100% !important;
+        flex-shrink: 0 !important;
+      }
+
+      .dest-list-section .banner-three__image img,
+      .dest-list-section div.banner-three__image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        display: block !important;
+      }
+
+      .dest-list-section .banner-three__single:hover .banner-three__image img {
+        transform: scale(1.08) !important;
+      }
+
+      /* Wavy bottom curve SVG mask */
+      .dest-list-section .dest-card-wave-svg {
+        position: absolute !important;
+        bottom: -1px !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 32px !important;
+        z-index: 4 !important;
+        fill: #ffffff !important;
+        pointer-events: none !important;
+        transition: fill 0.3s ease !important;
+      }
+
+      .dest-list-section .banner-three__single--blue .dest-card-wave-svg {
+        fill: #004ecc !important;
+      }
+
+      /* Country Flag Badge (Top Left) */
+      .dest-list-section .dest-card-flag-badge {
+        position: absolute !important;
+        top: 12px !important;
+        left: 12px !important;
+        z-index: 10 !important;
+        background: #ffffff !important;
+        border-radius: 10px !important;
+        width: 38px !important;
+        height: 38px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 20px !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+      }
+
+      /* Heart Wishlist Button (Top Right) */
+      .dest-list-section .dest-card-heart-btn {
+        position: absolute !important;
+        top: 12px !important;
+        right: 12px !important;
+        z-index: 10 !important;
+        background: rgba(255, 255, 255, 0.25) !important;
+        backdrop-filter: blur(6px) !important;
+        -webkit-backdrop-filter: blur(6px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        border-radius: 50% !important;
+        width: 36px !important;
+        height: 36px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #ffffff !important;
+        cursor: pointer !important;
+        transition: all 0.25s ease !important;
+        padding: 0 !important;
+      }
+
+      .dest-list-section .banner-three__single:not(.banner-three__single--blue) .dest-card-heart-btn {
+        color: #ffffff !important;
+        background: rgba(15, 23, 42, 0.2) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+      .dest-list-section .dest-card-heart-btn:hover {
+        transform: scale(1.1) !important;
+        background: #ffffff !important;
+        color: #ff3b30 !important;
+      }
+
+      /* Card Content Body */
+      .dest-list-section .banner-three__content {
+        padding: 16px 20px 20px 20px !important;
+        text-align: left !important;
+        background: #ffffff !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        transition: background 0.3s ease !important;
+      }
+
+      .dest-list-section .banner-three__single--blue .banner-three__content {
+        background: transparent !important;
+      }
+
+      .dest-list-section .banner-three__sub-title {
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        letter-spacing: 1.4px !important;
+        text-transform: uppercase !important;
+        color: #0052ff !important;
+        margin-bottom: 6px !important;
+        text-align: left !important;
+      }
+
+      .dest-list-section .banner-three__single--blue .banner-three__sub-title {
+        color: rgba(255, 255, 255, 0.85) !important;
+      }
+
+      .dest-list-section .banner-three__title,
+      .dest-list-section h3.banner-three__title {
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif !important;
+        font-size: 22px !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
+        margin: 0 !important;
+        text-align: left !important;
+        line-height: 1.2 !important;
+      }
+
+      .dest-list-section .banner-three__title a {
+        color: #0f172a !important;
+        text-decoration: none !important;
+        transition: color 0.2s ease !important;
+      }
+
+      .dest-list-section .banner-three__single--blue .banner-three__title,
+      .dest-list-section .banner-three__single--blue h3.banner-three__title,
+      .dest-list-section .banner-three__single--blue .banner-three__title a {
+        color: #ffffff !important;
+      }
+
+      /* Card Location Pin & Rating Score Row */
+      .dest-list-section .dest-card-meta {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        margin-top: 10px !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        color: #64748b !important;
+      }
+
+      .dest-list-section .banner-three__single--blue .dest-card-meta {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+
+      .dest-list-section .dest-card-divider {
+        height: 1px !important;
+        background: #f1f5f9 !important;
+        margin: 14px 0 14px 0 !important;
+        width: 100% !important;
+      }
+
+      .dest-list-section .banner-three__single--blue .dest-card-divider {
+        background: rgba(255, 255, 255, 0.2) !important;
+      }
+
+      /* Card Footer Row (Listings count & Round Orange Arrow Button) */
+      .dest-list-section .dest-card-footer {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+      }
+
+      .dest-list-section .dest-card-listings-text {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+      }
+
+      .dest-list-section .banner-three__single--blue .dest-card-listings-text {
+        color: #ffffff !important;
+      }
+
+      .dest-list-section .dest-card-arrow-btn {
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 50% !important;
+        background: #ff7a00 !important;
+        color: #ffffff !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        text-decoration: none !important;
+        box-shadow: 0 6px 16px rgba(255, 122, 0, 0.4) !important;
+        transition: transform 0.25s ease, background 0.25s ease !important;
+        z-index: 6 !important;
+      }
+
+      .dest-list-section .dest-card-arrow-btn:hover {
+        transform: scale(1.1) !important;
+        background: #ff5500 !important;
+      }
+
+      /* ── TRUST FEATURES BAR (Bottom 3 Features) ── */
+      .dest-features-bar {
+        margin-top: 56px !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-around !important;
+        gap: 24px !important;
+        padding: 24px 36px !important;
+        background: #ffffff !important;
+        border-radius: 24px !important;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+        border: 1px solid #f1f5f9 !important;
+      }
+
+      .dest-feature-item {
+        display: flex !important;
+        align-items: center !important;
+        gap: 16px !important;
+      }
+
+      .dest-feature-icon {
+        width: 54px !important;
+        height: 54px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+      }
+
+      .dest-feature-icon--blue {
+        background: #ebf2ff !important;
+        color: #0052ff !important;
+      }
+
+      .dest-feature-icon--orange {
+        background: #fff4e5 !important;
+        color: #ff7a00 !important;
+      }
+
+      .dest-feature-title {
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
+        margin: 0 0 2px 0 !important;
+      }
+
+      .dest-feature-sub {
+        font-size: 13px !important;
+        color: #64748b !important;
+        margin: 0 !important;
+      }
+
+      /* ── RESPONSIVE BREAKPOINTS ── */
+
+      @media (max-width: 1200px) {
+        .dest-list-section {
+          --dest-card-width: 220px;
+          --dest-card-gap: 20px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .dest-list-section {
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 36px !important;
+          padding: 56px 24px 48px !important;
+        }
+
+        .dest-list-section > .dest-list-left,
+        .dest-list-section > .dest-list-right,
+        .dest-list-section > .elementor-element-11d7825,
+        .dest-list-section > .elementor-element-3baafca {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+
+        .dest-list-section .gsc-heading .content-inner {
+          text-align: center !important;
+        }
+
+        .dest-list-section .gsc-heading .title-desc {
+          max-width: 560px !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+
+        .dest-list-section .gsc-heading .heading-action {
+          display: flex !important;
+          justify-content: center !important;
+        }
+
+        .dest-features-bar {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          padding: 24px !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .dest-list-section {
+          --dest-card-width: min(72vw, 240px);
+          --dest-card-gap: 16px;
+          padding: 40px 0 32px !important;
+        }
+      }
+
+        .dest-list-section > .elementor-element-11d7825 {
+          padding: 0 20px !important;
+        }
+
+        .dest-list-section > .elementor-element-3baafca {
+          padding-left: 20px !important;
+        }
+
+        .dest-list-section .gsc-heading .heading-action .btn-theme,
+        .dest-list-section .gsc-heading .heading-action a.btn-cta {
+          width: 100% !important;
+          max-width: 280px !important;
+        }
+
+        .dest-list-section .banner-three__image {
+          height: clamp(170px, 42vw, 210px) !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .dest-list-section {
+          --dest-card-width: min(76vw, 220px);
+          --dest-arch-radius: 72px;
+          padding: 40px 0 32px !important;
+        }
+
+        .dest-list-section .gsc-heading .title span {
+          font-size: clamp(24px, 7.5vw, 32px) !important;
+        }
+
+        .dest-list-section .banner-three__image {
+          height: 185px !important;
+        }
+      }
+

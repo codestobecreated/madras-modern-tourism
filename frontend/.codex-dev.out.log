@@ -1,0 +1,75 @@
+
+> frontend@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.13:3000
+✓ Ready in 1084ms
+
+○ Compiling /wp-content/[...path] ...
+ GET /wp-content/uploads/2024/12/layer-4.png 200 in 7.9s (next.js: 7.9s, application-code: 31ms)
+ GET /wp-includes/js/wp-emoji-release.min.js?ver=7.0 200 in 1700ms (next.js: 1679ms, application-code: 20ms)
+ GET / 200 in 802ms (next.js: 21ms, application-code: 781ms)
+ GET / 200 in 39.9s (next.js: 262ms, application-code: 39.6s)
+ GET / 200 in 911ms (next.js: 8ms, application-code: 903ms)
+ GET / 200 in 1413ms (next.js: 11ms, application-code: 1402ms)
+ GET / 200 in 806ms (next.js: 7ms, application-code: 798ms)
+ GET /wp-content/plugins/woocommerce/assets/fonts/Inter-VariableFont_slnt,wght.woff2 200 in 46ms (next.js: 19ms, application-code: 28ms)
+ GET / 200 in 807ms (next.js: 10ms, application-code: 798ms)
+ GET / 200 in 684ms (next.js: 6ms, application-code: 677ms)
+✓ Finished writing to filesystem cache in 10.6s
+✓ Compiled in 20s
+ GET / 200 in 24.2s (next.js: 20.5s, application-code: 3.8s)
+ GET / 200 in 26.9s (next.js: 22.7s, application-code: 4.2s)
+ GET / 200 in 3.5s (next.js: 7ms, application-code: 3.5s)
+ GET / 200 in 3.5s (next.js: 548ms, application-code: 3.0s)
+ GET / 200 in 3.5s (next.js: 255ms, application-code: 3.3s)
+ GET / 200 in 4.0s (next.js: 249ms, application-code: 3.8s)
+ GET / 200 in 4.8s (next.js: 495ms, application-code: 4.3s)
+ GET / 200 in 4.8s (next.js: 7ms, application-code: 4.8s)
+ GET / 200 in 4.0s (next.js: 13ms, application-code: 3.9s)
+ GET / 200 in 4.4s (next.js: 349ms, application-code: 4.1s)
+ GET / 200 in 5.0s (next.js: 9ms, application-code: 5.0s)
+ GET / 200 in 5.1s (next.js: 8ms, application-code: 5.1s)
+ GET / 200 in 5.5s (next.js: 13ms, application-code: 5.5s)
+ GET / 200 in 5.5s (next.js: 500ms, application-code: 5.0s)
+ GET / 200 in 4.6s (next.js: 9ms, application-code: 4.6s)
+ GET / 200 in 4.6s (next.js: 404ms, application-code: 4.2s)
+ GET / 200 in 4.6s (next.js: 814ms, application-code: 3.8s)
+ GET / 200 in 4.3s (next.js: 11ms, application-code: 4.3s)
+ GET / 200 in 5.1s (next.js: 512ms, application-code: 4.6s)
+ GET / 200 in 5.1s (next.js: 13ms, application-code: 5.1s)
+ GET / 200 in 4.2s (next.js: 8ms, application-code: 4.2s)
+ GET / 200 in 3.7s (next.js: 9ms, application-code: 3.7s)
+ GET / 200 in 3.3s (next.js: 8ms, application-code: 3.3s)
+ GET / 200 in 4.1s (next.js: 394ms, application-code: 3.7s)
+ GET / 200 in 3.7s (next.js: 10ms, application-code: 3.6s)
+ GET / 200 in 3.7s (next.js: 510ms, application-code: 3.1s)
+ GET / 200 in 2.7s (next.js: 417ms, application-code: 2.3s)
+ GET / 200 in 2.7s (next.js: 11ms, application-code: 2.7s)
+ GET / 200 in 3.2s (next.js: 851ms, application-code: 2.4s)
+ GET / 200 in 2.9s (next.js: 9ms, application-code: 2.9s)
+ GET / 200 in 2.5s (next.js: 6ms, application-code: 2.5s)
+ GET / 200 in 2.9s (next.js: 7ms, application-code: 2.9s)
+ GET / 200 in 2.8s (next.js: 11ms, application-code: 2.7s)
+ GET / 200 in 2.7s (next.js: 561ms, application-code: 2.2s)
+ GET / 200 in 2.7s (next.js: 7ms, application-code: 2.7s)
+ GET / 200 in 2.7s (next.js: 7ms, application-code: 2.6s)
+ GET / 200 in 2.7s (next.js: 389ms, application-code: 2.3s)
+ GET / 200 in 2.3s (next.js: 6ms, application-code: 2.2s)
+ GET / 200 in 1846ms (next.js: 6ms, application-code: 1840ms)
+ GET / 200 in 1389ms (next.js: 6ms, application-code: 1383ms)
+ GET / 200 in 1390ms (next.js: 431ms, application-code: 959ms)
+ GET / 200 in 483ms (next.js: 7ms, application-code: 476ms)
+○ Compiling /tours/tours-page ...
+✓ Finished filesystem cache database compaction in 4.6min
+ GET /wp-content/plugins/woocommerce/assets/fonts/Inter-VariableFont_slnt,wght.woff2 200 in 4.3s (next.js: 3.3s, application-code: 1020ms)
+ GET / 200 in 10.1s (next.js: 141ms, application-code: 9.9s)
+ GET / 200 in 24.9s (next.js: 355ms, application-code: 24.5s)
+✓ Compiled in 34.6s
+ GET /toure 404 in 1124ms (next.js: 716ms, application-code: 408ms)
+ GET /tours 404 in 181ms (next.js: 16ms, application-code: 165ms)
+ GET / 200 in 1317ms (next.js: 17ms, application-code: 1300ms)
+ GET /wp-content/plugins/woocommerce/assets/fonts/Inter-VariableFont_slnt,wght.woff2 200 in 19ms (next.js: 11ms, application-code: 8ms)
+ GET / 200 in 1603ms (next.js: 14ms, application-code: 1589ms)
