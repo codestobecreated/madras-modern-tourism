@@ -1,11 +1,11 @@
-import WpPageContent from "@/components/WpPageContent";
-import { getWpPageData } from "@/lib/wpPageUtils";
+import StaticPageContent from "@/components/StaticPageContent";
+import { getStaticPageData } from "@/lib/staticPageData";
 
 export default function HowItWorkPage() {
-  const pageData = getWpPageData("how-it-work.html");
+  const pageData = getStaticPageData("how-it-work.html");
 
   return (
-    <WpPageContent
+    <StaticPageContent
       html={pageData.bodyContent}
       bodyClass={pageData.bodyClass}
       bodyStyle={pageData.bodyStyle}

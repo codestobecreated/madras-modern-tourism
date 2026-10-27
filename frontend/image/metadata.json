@@ -1,0 +1,6 @@
+{
+  "name": "Travivu",
+  "description": "Premium Travel and Tour Booking application showcasing beautiful destinations, custom tour filters, and immersive client reviews.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

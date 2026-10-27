@@ -1,11 +1,11 @@
-import WpPageContent from "@/components/WpPageContent";
-import { getWpPageData } from "@/lib/wpPageUtils";
+import StaticPageContent from "@/components/StaticPageContent";
+import { getStaticPageData } from "@/lib/staticPageData";
 
 export default function DestinationPage() {
-  const pageData = getWpPageData("destination.html");
+  const pageData = getStaticPageData("destination.html");
 
   return (
-    <WpPageContent
+    <StaticPageContent
       html={pageData.bodyContent}
       bodyClass={pageData.bodyClass}
       bodyStyle={pageData.bodyStyle}

@@ -2,20 +2,8 @@
 
 import { useEffect } from "react";
 
-const BACKEND_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || "http://127.0.0.1:8000";
-const LOCATIONS_API = `${BACKEND_BASE}/api/locations/`;
 const SECTION_SELECTOR = ".dest-list-section";
 const CAROUSEL_SELECTOR = `${SECTION_SELECTOR} .gsc-listings-banner-group .swiper`;
-
-type Location = {
-  id: number;
-  name: string;
-  slug: string;
-  subtitle: string;
-  listings_count: number;
-  image_url: string;
-  card_style: string;
-};
 
 export default function DestinationCarouselHandler() {
   useEffect(() => {
@@ -87,131 +75,6 @@ export default function DestinationCarouselHandler() {
         btn.classList.toggle("is-active", i === normalized);
         btn.setAttribute("aria-selected", i === normalized ? "true" : "false");
       });
-    }
-
-    async function fetchAndRenderDestinations() {
-      try {
-        const res = await fetch(LOCATIONS_API);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (data.status === "success" && Array.isArray(data.locations) && data.locations.length > 0) {
-          renderCards(data.locations);
-        } else {
-          prepareStaticSlides();
-          startAutoSlide();
-        }
-      } catch (err) {
-        console.warn("[DestinationCarousel] Could not fetch locations:", err);
-        prepareStaticSlides();
-        startAutoSlide();
-      }
-    }
-
-    function renderCards(locations: Location[]) {
-      const swiperWrapper = document.querySelector(
-        `${SECTION_SELECTOR} .gsc-listings-banner-group .swiper-wrapper`
-      ) as HTMLElement | null;
-
-      if (!swiperWrapper) {
-        prepareStaticSlides();
-        startAutoSlide();
-        return;
-      }
-
-      uniqueCount = locations.length;
-      const tripled = [...locations, ...locations, ...locations];
-
-      const flagMap: Record<string, string> = {
-        maldives: "🇲🇻",
-        italy: "🇮🇹",
-        rome: "🇮🇹",
-        france: "🇫🇷",
-        sydney: "🇦🇺",
-        australia: "🇦🇺",
-        thailand: "🇹🇭",
-        japan: "🇯🇵",
-        dubai: "🇦🇪",
-        uk: "🇬🇧",
-        usa: "🇺🇸",
-      };
-
-      const ratingMap: Record<string, { score: string; reviews: number }> = {
-        maldives: { score: "4.8", reviews: 236 },
-        rome: { score: "4.7", reviews: 189 },
-        italy: { score: "4.7", reviews: 189 },
-        france: { score: "4.9", reviews: 312 },
-        sydney: { score: "4.9", reviews: 312 },
-      };
-
-      const countryMap: Record<string, string> = {
-        maldives: "Indian Ocean",
-        rome: "Italy",
-        italy: "Europe",
-        france: "Europe",
-        sydney: "Australia",
-      };
-
-      const html = tripled.map((loc, idx) => {
-        const fallbackImg = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80";
-        const imgSrc = loc.image_url || fallbackImg;
-        const subtitle = (loc.subtitle || "TRAVEL TO").toUpperCase().replace(/_/g, " ");
-        const realIdx = idx % locations.length;
-        const slug = loc.slug.toLowerCase();
-
-        const isBlue = loc.card_style === "blue" || slug === "maldives" || realIdx === 0;
-        const cardClass = isBlue
-          ? "banner-three__single banner-three__single--blue"
-          : "banner-three__single";
-
-        const flag = flagMap[slug] || "✈️";
-        const rating = ratingMap[slug] || { score: "4.8", reviews: 150 + (realIdx * 37) % 120 };
-        const country = countryMap[slug] || loc.name;
-
-        return `
-          <div class="swiper-slide dest-slide" data-swiper-slide-index="${realIdx}"
-               role="group" aria-label="${realIdx + 1} / ${locations.length}">
-            <div class="item">
-              <div class="${cardClass}">
-                <div class="banner-three__wrap">
-                  <div class="banner-three__image">
-                    <img decoding="async" src="${imgSrc}" alt="${loc.name}" loading="lazy" />
-                    <div class="dest-card-flag-badge">${flag}</div>
-                    <button type="button" class="dest-card-heart-btn" aria-label="Add ${loc.name} to Wishlist">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    </button>
-                    <svg class="dest-card-wave-svg" viewBox="0 0 500 80" preserveAspectRatio="none">
-                      <path d="M0,30 C150,80 350,0 500,40 L500,80 L0,80 Z"></path>
-                    </svg>
-                  </div>
-                  <div class="banner-three__content">
-                    <div class="banner-three__content-wrap">
-                      <div class="banner-three__sub-title">${subtitle}</div>
-                      <h3 class="banner-three__title">
-                        <a href="/destinations/${loc.slug}">${loc.name}</a>
-                      </h3>
-                      <div class="dest-card-meta">
-                        <span class="dest-card-location">📍 ${country}</span>
-                        <span class="dest-card-rating">⭐ ${rating.score} (${rating.reviews})</span>
-                      </div>
-                      <div class="dest-card-divider"></div>
-                      <div class="dest-card-footer">
-                        <span class="dest-card-listings-text">${loc.listings_count} Listings</span>
-                        <a href="/destinations/${loc.slug}" class="dest-card-arrow-btn" aria-label="View ${loc.name}">➔</a>
-                      </div>
-                    </div>
-                  </div>
-                  <a class="banner-three__overlay" href="/destinations/${loc.slug}" aria-label="View ${loc.name}"></a>
-                </div>
-              </div>
-            </div>
-          </div>`;
-      }).join("");
-
-      swiperWrapper.innerHTML = html;
-      swiperWrapper.style.cssText = "display:flex; transform:translate3d(0px,0px,0px); transition:none; padding:10px 0 4px 0;";
-      clearInlineSlideWidths(swiperWrapper);
-
-      startAutoSlide();
     }
 
     function prepareStaticSlides() {
@@ -398,7 +261,10 @@ export default function DestinationCarouselHandler() {
       }
     }
 
-    const timer = setTimeout(() => { fetchAndRenderDestinations(); }, 500);
+    const timer = setTimeout(() => {
+      prepareStaticSlides();
+      startAutoSlide();
+    }, 500);
 
     return () => {
       clearTimeout(timer);
