@@ -1,11 +1,11 @@
-import WpPageContent from "@/components/WpPageContent";
-import { getWpPageData } from "@/lib/wpPageUtils";
+import StaticPageContent from "@/components/StaticPageContent";
+import { getStaticPageData } from "@/lib/staticPageData";
 
 export default function ToursListViewPage() {
-  const pageData = getWpPageData("tours-list-view.html");
+  const pageData = getStaticPageData("tours-list-view.html");
 
   return (
-    <WpPageContent
+    <StaticPageContent
       html={pageData.bodyContent}
       bodyClass={pageData.bodyClass}
       bodyStyle={pageData.bodyStyle}

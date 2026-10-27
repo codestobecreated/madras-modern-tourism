@@ -1,18 +1,19 @@
 @import "tailwindcss";
-@import "./css/1_wp-emoji-styles-inline-css.css";
-@import "./css/2_classic-theme-styles-inline-css.css";
-@import "./css/3_global-styles-inline-css.css";
-@import "./css/4_woocommerce-inline-inline-css.css";
-@import "./css/5_heateor_sss_frontend_css-inline-css.css";
-@import "./css/6_travivu-custom-style-color-inline-css.css";
-@import "./css/7_block_7.css";
-@import "./css/8_block_8.css";
-@import "./css/9_block_9.css";
-@import "./css/10_block_10.css";
-@import "./css/11_wp-custom-css.css";
-@import "./css/12_SR7_1_1_navigationstyles.css";
+@import "./css/01_emoji-styles.css";
+@import "./css/02_classic-content-styles.css";
+@import "./css/03_global-content-styles.css";
+@import "./css/04_booking-commerce-styles.css";
+@import "./css/05_social-share-styles.css";
+@import "./css/06_brand-color-styles.css";
+@import "./css/07_content-block.css";
+@import "./css/08_content-block.css";
+@import "./css/09_content-block.css";
+@import "./css/10_content-block.css";
+@import "./css/11_custom-overrides.css";
+@import "./css/12_slider-navigation.css";
 @import "./css/13_custom-pill-navbar-overrides.css";
 @import "./css/14_team-hover-effect.css";
+@import "./css/15_thirdparty_libraries.css";
 
 :root {
   --background: #ffffff;
@@ -22,8 +23,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
