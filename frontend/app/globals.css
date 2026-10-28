@@ -1,19 +1,4 @@
 @import "tailwindcss";
-@import "./css/01_emoji-styles.css";
-@import "./css/02_classic-content-styles.css";
-@import "./css/03_global-content-styles.css";
-@import "./css/04_booking-commerce-styles.css";
-@import "./css/05_social-share-styles.css";
-@import "./css/06_brand-color-styles.css";
-@import "./css/07_content-block.css";
-@import "./css/08_content-block.css";
-@import "./css/09_content-block.css";
-@import "./css/10_content-block.css";
-@import "./css/11_custom-overrides.css";
-@import "./css/12_slider-navigation.css";
-@import "./css/13_custom-pill-navbar-overrides.css";
-@import "./css/14_team-hover-effect.css";
-@import "./css/15_thirdparty_libraries.css";
 
 :root {
   --background: #ffffff;
@@ -26,6 +11,43 @@
   --font-sans: Arial, Helvetica, sans-serif;
   --font-mono: "Courier New", monospace;
 }
+
+/* Site design tokens: bg-blue, text-navy, font-grace, shadow-card, ... */
+@theme {
+  --color-blue: #015fc9;
+  --color-blue-dark: #014a9e;
+  --color-orange: #ff9d3d;
+  --color-orange-dark: #f28a22;
+  --color-navy: #16243d;
+  --color-ink: #101a2c;
+  --color-body: #82828a;
+  --color-soft: #f4f6fa;
+  --color-cream: #fdf6ee;
+  --color-line: #e8ebf1;
+
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-grace: "Covered By Your Grace", cursive;
+  --font-kaushan: "Kaushan Script", "Covered By Your Grace", cursive;
+  --font-dm: "DM Sans", sans-serif;
+
+  --shadow-card: 0 20px 50px rgba(16, 26, 44, 0.08);
+}
+
+/* Breakpoints used by the home page design (max-* include the edge value). */
+@custom-variant max1600 (@media (max-width: 1600px));
+@custom-variant max1440 (@media (max-width: 1440px));
+@custom-variant max1280 (@media (max-width: 1280px));
+@custom-variant max1199 (@media (max-width: 1199px));
+@custom-variant max1024 (@media (max-width: 1024px));
+@custom-variant max767 (@media (max-width: 767px));
+/* Hero slider levels (the reference slider switches grids at 778 and 479). */
+@custom-variant max778 (@media (max-width: 778px));
+@custom-variant max479 (@media (max-width: 479px));
+@custom-variant min1025 (@media (min-width: 1025px));
+@custom-variant min1200 (@media (min-width: 1200px));
+
+/* Plain :hover, like the design (Tailwind's default only fires on hover-capable devices). */
+@custom-variant hover (&:hover);
 
 @media (prefers-color-scheme: dark) {
   :root {

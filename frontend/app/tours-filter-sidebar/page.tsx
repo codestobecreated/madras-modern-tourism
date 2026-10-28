@@ -1,15 +1,20 @@
-import StaticPageContent from "@/components/StaticPageContent";
-import { getStaticPageData } from "@/lib/staticPageData";
+import type { Metadata } from "next";
+import SiteShell from "../home/include/site-shell";
+import { container, section } from "../home/include/ui";
+import FilterTours from "./include/filter-tours";
+
+export const metadata: Metadata = {
+  title: "Tours – Filter Sidebar | Madras Modern Tourism",
+};
 
 export default function ToursFilterSidebarPage() {
-  const pageData = getStaticPageData("tours-filter-sidebar.html");
-  
   return (
-    <StaticPageContent
-      html={pageData.bodyContent}
-      bodyClass={pageData.bodyClass}
-      bodyStyle={pageData.bodyStyle}
-      stylesheets={pageData.stylesheets}
-    />
+    <SiteShell current="/tours-page" title="Tours">
+      <section className={section}>
+        <div className={container}>
+          <FilterTours />
+        </div>
+      </section>
+    </SiteShell>
   );
 }

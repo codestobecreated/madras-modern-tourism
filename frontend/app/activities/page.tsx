@@ -1,15 +1,17 @@
-import StaticPageContent from "@/components/StaticPageContent";
-import { getStaticPageData } from "@/lib/staticPageData";
+import type { Metadata } from "next";
+import SiteShell from "../home/include/site-shell";
+import ActivityGrid from "./include/activity-grid";
+import ActivitiesCta from "./include/activities-cta";
+
+export const metadata: Metadata = {
+  title: "Activities | Madras Modern Tourism",
+};
 
 export default function ActivitiesPage() {
-  const pageData = getStaticPageData("activities.html");
-
   return (
-    <StaticPageContent
-      html={pageData.bodyContent}
-      bodyClass={pageData.bodyClass}
-      bodyStyle={pageData.bodyStyle}
-      stylesheets={pageData.stylesheets}
-    />
+    <SiteShell current="/activities" title="Activities">
+      <ActivityGrid />
+      <ActivitiesCta />
+    </SiteShell>
   );
 }
