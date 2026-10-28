@@ -1,15 +1,17 @@
-import StaticPageContent from "@/components/StaticPageContent";
-import { getStaticPageData } from "@/lib/staticPageData";
+import type { Metadata } from "next";
+import SiteShell from "../home/include/site-shell";
+import TypeGrid from "./include/type-grid";
+import ToursByType from "./include/tours-by-type";
+
+export const metadata: Metadata = {
+  title: "Tour Types | Madras Modern Tourism",
+};
 
 export default function TourTypesPage() {
-  const pageData = getStaticPageData("tour-types.html");
-
   return (
-    <StaticPageContent
-      html={pageData.bodyContent}
-      bodyClass={pageData.bodyClass}
-      bodyStyle={pageData.bodyStyle}
-      stylesheets={pageData.stylesheets}
-    />
+    <SiteShell current="/activities" title="Tour Types">
+      <TypeGrid />
+      <ToursByType />
+    </SiteShell>
   );
 }

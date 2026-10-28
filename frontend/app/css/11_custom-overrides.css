@@ -1,9 +1,0 @@
-      @media (max-width: 767px) {
-        .wpte-toolbar-container {
-          z-index: 111 !important;
-        }
-      }
-
-      .wpte-trip__search-fields .title_field {
-        display: block !important;
-      }

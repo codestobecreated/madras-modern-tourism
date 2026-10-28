@@ -1,15 +1,20 @@
-import StaticPageContent from "@/components/StaticPageContent";
-import { getStaticPageData } from "@/lib/staticPageData";
+import type { Metadata } from "next";
+import SiteShell from "../home/include/site-shell";
+import ToursGrid from "./include/tours-grid";
 
-export default function ToursPage() {
-  const pageData = getStaticPageData("tours-page.html");
-  
+export const metadata: Metadata = {
+  title: "Tours | Madras Modern Tourism",
+};
+
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
+const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
+
+export default async function ToursPage({ searchParams }: { searchParams: SearchParams }) {
+  const sp = await searchParams;
   return (
-    <StaticPageContent
-      html={pageData.bodyContent}
-      bodyClass={pageData.bodyClass}
-      bodyStyle={pageData.bodyStyle}
-      stylesheets={pageData.stylesheets}
-    />
+    <SiteShell current="/tours-page" title="Tours">
+      <ToursGrid destination={first(sp.destination)} type={first(sp.type)} />
+    </SiteShell>
   );
 }

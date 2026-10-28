@@ -1,0 +1,85 @@
+/* Home page: element defaults and keyframes only. Everything else is inline Tailwind in ./include. */
+
+@layer base {
+  .mmt h1,
+  .mmt h2,
+  .mmt h3,
+  .mmt h4,
+  .mmt h5 {
+    margin: 0;
+    color: var(--color-navy);
+    font-family: var(--font-jakarta);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .mmt p {
+    margin: 0;
+  }
+
+  .mmt a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .mmt img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .mmt ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mmt button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mmt *,
+  .mmt *::before,
+  .mmt *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes mmt-drop {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+/* Hero birds: pendulum swing around a point below them (reference: ±40°, 1.5s each way). */
+@keyframes mmt-swing {
+  from { rotate: -40deg; }
+  to   { rotate: 40deg; }
+}
+
+/* Hero clouds: slow 3D turn (reference: rotateY ±40°, 4s each way). */
+@keyframes mmt-turn {
+  from { transform: perspective(600px) rotateY(-40deg); }
+  to   { transform: perspective(600px) rotateY(40deg); }
+}
+
+@keyframes mmt-rise {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mmt-scale-out-2 {
+  0%, 100% { scale: 1; }
+  50%      { scale: 0.6; }
+}
+
+@keyframes mmt-scale-out-3 {
+  0%, 100% { scale: 1; }
+  50%      { scale: 0.9; }
+}

@@ -13,9 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // Browser extensions (e.g. QuillBot's data-qb-installed) add attributes to <html> before React loads.
     <html
       lang="en"
       className="h-full antialiased"
+      suppressHydrationWarning
     >
       <head>
         <MetadataHead />
