@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { priceFor, type TourDetail } from "../../../home/include/catalog";
+import { inr } from "../../../home/include/data";
 import { btnBlue, btnMotion, cx } from "../../../home/include/ui";
 
-const fmt = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 const today = () => new Date().toISOString().slice(0, 10);
 
 /** Sticky sidebar: pick a date and guests, then continue to /booking. */
@@ -27,10 +27,10 @@ export default function BookingCard({ tour: t }: { tour: TourDetail }) {
     <aside className="sticky top-[110px] max1024:static">
       <form onSubmit={book} className="p-[30px] rounded-[12px] bg-white [box-shadow:0_10px_30px_rgba(0,0,0,0.1)]">
         <div className="pb-[20px] border-b border-solid border-line">
-          <small className="block text-[14px]">From</small>
-          <strong className="text-navy text-[30px] leading-[1.2]">{fmt(t.price)}</strong>
-          {t.oldPrice && <del className="ml-[10px] text-[16px]">{fmt(t.oldPrice)}</del>}
-          <span className="ml-[6px] text-[14px]">/ person</span>
+          <small className="block text-[14px]">{t.price > 0 ? "From" : "Price"}</small>
+          <strong className="text-navy text-[30px] leading-[1.2]">{inr(t.price)}</strong>
+          {t.oldPrice && <del className="ml-[10px] text-[16px]">{inr(t.oldPrice)}</del>}
+          {t.price > 0 && <span className="ml-[6px] text-[14px]">/ person</span>}
         </div>
         <ul className="py-[20px] grid gap-[8px] text-[15px] font-medium border-b border-solid border-line">
           <li><i className="fa-solid fa-clock mr-[10px] text-orange" />{t.duration}</li>
@@ -60,10 +60,12 @@ export default function BookingCard({ tour: t }: { tour: TourDetail }) {
           </button>
         </div>
 
-        <div className="mt-[20px] flex justify-between text-[15px]">
-          <span>{fmt(each)} × {guests}</span>
-          <strong className="text-navy">{fmt(each * guests)}</strong>
-        </div>
+        {each > 0 && (
+          <div className="mt-[20px] flex justify-between text-[15px]">
+            <span>{inr(each)} × {guests}</span>
+            <strong className="text-navy">{inr(each * guests)}</strong>
+          </div>
+        )}
 
         <button type="submit" className={cx(btnBlue, btnMotion, "mt-[20px] w-full justify-center")}>
           Book Now <i className="fa-solid fa-arrow-right" />

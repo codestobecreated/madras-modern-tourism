@@ -11,9 +11,9 @@ export default function ToursGrid({ destination, type }: { destination?: string;
   const filtered = Boolean(destName || typeName);
 
   return (
-    <section className={section}>
+    <section className={cx(section, "!pt-[50px] max1024:!pt-[40px] max767:!pt-[32px]")}>
       <div className={container}>
-        <Heading tag="Holiday Packages" title="Find your next tour" text="Bali, Kuala Lumpur and Vietnam packages with hotels, transfers and sightseeing included." center reveal={false} />
+        <Heading tag="Holiday Packages" title="Find your next tour" text="Bali, Kuala Lumpur, Vietnam, Sri Lanka, Thailand and Dubai packages with hotels, transfers and sightseeing included." center reveal={false} />
 
         {filtered && (
           <div className="mb-[40px] flex flex-wrap items-center justify-center gap-[10px] text-[15px]">

@@ -29,13 +29,13 @@ const text = (active: boolean) =>
 
 export default function TourTypes() {
   return (
-    <section className="pt-[120px] pb-0 max1024:pt-[90px] max767:pt-[60px]">
+    <section className="pt-[24px] pb-0 max1024:pt-[20px] max767:pt-[16px]">
       <div className="w-full max-w-[1402px] mx-auto px-[16px]">
         <div
           className={cx(
-            "relative max-w-[1370px] mx-auto pt-[120px] px-[100px] pb-[120px] overflow-hidden rounded-[24px]",
+            "relative max-w-[1370px] mx-auto pt-[24px] px-[100px] pb-[50px] overflow-hidden rounded-[24px]",
             "[background:#f1f5fb_url(/images/home/tour-types/types-city.webp)_center/cover_no-repeat]",
-            "max1280:pt-[80px] max1280:px-[40px] max1280:pb-[100px] max767:pt-[60px] max767:px-[20px] max767:pb-[70px]"
+            "max1280:pt-[24px] max1280:px-[40px] max1280:pb-[44px] max767:pt-[20px] max767:px-[20px] max767:pb-[36px]"
           )}
         >
           <svg className="absolute inset-0 w-full h-[60%] pointer-events-none" viewBox="0 0 900 300" fill="none" aria-hidden="true">
@@ -43,7 +43,7 @@ export default function TourTypes() {
             <path d="M560 10 C 640 120, 760 20, 800 110 S 880 220, 940 160" stroke="#c5cfdd" strokeWidth="2" strokeDasharray="8 8" />
             <circle cx="820" cy="80" r="34" stroke="#c5cfdd" strokeWidth="2" strokeDasharray="6 6" />
           </svg>
-          <Heading className="relative mb-[54px]" tag="Service" title={<>Choose Our Tour Types<br />& Enjoy Now</>} center />
+          <Heading className="relative mb-[36px]" tag="Service" title={<>Choose Our Tour Types<br />& Enjoy Now</>} center />
           <div className="relative grid grid-cols-[repeat(5,1fr)] gap-[30px] max1024:grid-cols-[repeat(3,1fr)] max1024:gap-y-[34px] max767:grid-cols-[1fr_1fr]">
             {tourTypes.map((t, i) => {
               const active = i === 1;

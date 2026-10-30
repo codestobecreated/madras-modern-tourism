@@ -37,28 +37,27 @@ const fallbackDestinations: Destination[] = catalogDestinations.map((d, i) => ({
   card_style: i % 2 ? "blue" : "orange",
 }));
 
-/*
- * Row = from the 1170px container's left edge to the screen's right edge.
- * Heading column = 28.85% of the row minus the 30px gap (347px below 1025).
- */
+/* Row = full width with 3% side padding (16px minimum); the heading column is 36% of it minus the 30px gap (one column below 1025). */
 const row = cx(
-  "grid grid-cols-[347px_minmax(0,1fr)] gap-[30px] [align-items:start] pl-[max(16px,calc((100%_-_1170px)_/_2))]",
+  "grid grid-cols-[347px_minmax(0,1fr)] gap-[30px] [align-items:center] px-[max(16px,3%)]",
   "max1024:grid-cols-[1fr]",
-  "min1025:[container-type:inline-size] min1025:grid-cols-[calc(28.85%_-_30px)_minmax(0,1fr)]"
+  "min1025:grid-cols-[calc(36%_-_30px)_minmax(0,1fr)]"
 );
 
 /*
- * --w is the card width: 236px by default, 220px on phones, and fluid on desktop
- * (4 cards in 79% of the row: 236px at 1440, ~281 at 1910).
- * The cream/blue base (::before) and its blue hover layer (::after) start halfway down the photo.
+ * The slider shows exactly --n whole cards (3, 4 on screens 1600px and wider, 2 on phones), so none is cut off at the edge.
+ * --w is the card width; the cream base (::before) and its blue hover layer (::after) start halfway down the photo.
  */
+const viewport = "overflow-hidden [container-type:inline-size] [--n:3] [--gap:30px] min-[1600px]:[--n:4] max767:[--n:2] max767:[--gap:16px]";
 const card = cx(
-  "group/card relative flex flex-col flex-[0_0_var(--w,236px)] snap-start",
-  "before:content-[''] before:absolute before:top-[calc(var(--w,236px)_*_299_/_236_/_2)] before:right-0 before:bottom-0 before:left-0 before:rounded-[0_0_0_calc(var(--w,236px)_*_0.57)]",
-  "after:content-[''] after:absolute after:top-[calc(var(--w,236px)_*_299_/_236_/_2)] after:right-0 after:bottom-0 after:left-0 after:rounded-[0_0_0_calc(var(--w,236px)_*_0.57)]",
-  "after:bg-blue after:opacity-0 after:[transition:opacity_0.39s_ease] hover:after:opacity-100",
-  "max767:[--w:220px] max767:basis-[220px] min1025:[--w:calc(19.75cqw_-_22.5px)]"
+  "group/card relative flex flex-col flex-[0_0_var(--w)] [--w:calc((100cqw_-_(var(--n)_-_1)_*_var(--gap))_/_var(--n))]",
+  "[transition:transform_0.4s_ease] hover:[transform:translateY(-6px)] focus-visible:[transform:translateY(-6px)]",
+  "before:content-[''] before:absolute before:top-[calc(var(--w)_*_299_/_236_/_2)] before:right-0 before:bottom-0 before:left-0 before:rounded-[0_0_0_calc(var(--w)_*_0.3)] before:bg-cream",
+  "after:content-[''] after:absolute after:top-[calc(var(--w)_*_299_/_236_/_2)] after:right-0 after:bottom-0 after:left-0 after:rounded-[0_0_0_calc(var(--w)_*_0.3)]",
+  "after:bg-blue after:opacity-0 after:[transition:opacity_0.4s_ease] hover:after:opacity-100 focus-visible:after:opacity-100"
 );
+const arrow =
+  "w-[46px] h-[46px] rounded-[50%] [border:1px_solid_var(--color-line)] bg-white text-navy [transition:background_0.25s_ease,color_0.25s_ease] hover:bg-blue hover:text-white hover:border-blue";
 
 export default function Destinations() {
   const [items, setItems] = useState<Destination[]>(fallbackDestinations);
@@ -96,12 +95,35 @@ export default function Destinations() {
     return () => window.clearInterval(id);
   }, [paused]);
 
+  // Past the first copy (or before it), jump back to the same card in the other copy without a transition.
   const onTransitionEnd = () => {
     if (index >= items.length) {
       setAnimate(false);
       setIndex(index - items.length);
     }
   };
+
+  const next = () => {
+    setAnimate(true);
+    setIndex((i) => i + 1);
+  };
+  const prev = () => {
+    if (index > 0) {
+      setAnimate(true);
+      setIndex(index - 1);
+      return;
+    }
+    setAnimate(false);
+    setIndex(items.length);
+    // let the jump paint first, then slide back one card
+    window.setTimeout(() => {
+      setAnimate(true);
+      setIndex(items.length - 1);
+    }, 30);
+  };
+
+  // enough copies that the visible window never runs out of cards
+  const copies = Math.max(2, Math.ceil(4 / Math.max(items.length, 1)) + 1);
 
   useEffect(() => {
     fetch(`${BACKEND_BASE}/api/locations/`)
@@ -136,60 +158,57 @@ export default function Destinations() {
           title={section.title}
           text={section.description}
           reveal={false}
-          className="mb-0 max1024:pr-[16px]"
+          className="mb-0"
           textClassName={`${headingText} mb-[34px]`}
         >
-          <Link href={section.button_url} className={btn}>{section.button_label}</Link>
+          <div className="flex items-center gap-[12px]">
+            <Link href={section.button_url} className={btn}>{section.button_label}</Link>
+            <button type="button" aria-label="Previous destination" onClick={prev} className={cx(arrow, "ml-auto min1025:ml-[8px]")}>
+              <i className="fa-solid fa-arrow-left" />
+            </button>
+            <button type="button" aria-label="Next destination" onClick={next} className={arrow}>
+              <i className="fa-solid fa-arrow-right" />
+            </button>
+          </div>
         </Heading>
 
         <div
-          className="overflow-hidden"
+          className={viewport}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
         >
           <div
             ref={trackRef}
-            className="flex w-max gap-[30px] p-0 [scrollbar-width:none] will-change-transform [&::-webkit-scrollbar]:hidden"
+            className="flex gap-[var(--gap)] pt-[8px] will-change-transform"
             style={{ transform: `translateX(-${index * step}px)`, transition: animate ? "transform 0.8s ease" : "none" }}
             onTransitionEnd={onTransitionEnd}
           >
-          {[0, 1].flatMap((copy) => items.map((d) => {
-            const blue = d.card_style === "blue";
-            return (
-              <Link
-                key={`${d.id}-${copy}`}
-                href={`/tours-page?destination=${d.slug}`}
-                className={cx(card, blue ? "before:bg-blue" : "before:bg-cream")}
-                aria-hidden={copy === 1 || undefined}
-                tabIndex={copy === 1 ? -1 : undefined}
-              >
-                <span className="relative z-[1] block flex-[0_0_auto] w-full aspect-[236/299] overflow-hidden rounded-[999px]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={d.image_url} alt={d.name} loading="lazy" className="w-full h-full object-cover [transition:transform_0.8s_ease]" />
-                  <span
-                    className={cx(
-                      "absolute left-[50%] bottom-[24px] px-[16px] py-[4px] rounded-[20px] text-[12px] font-semibold leading-[12px] whitespace-nowrap [transform:translateX(-50%)]",
-                      blue ? "bg-blue text-white" : "bg-orange text-white"
-                    )}
-                  >
-                    {d.listings_count} Listings
-                  </span>
+          {Array.from({ length: copies }, (_, copy) => items.map((d) => (
+            <Link
+              key={`${d.id}-${copy}`}
+              href={`/destination/${d.slug}`}
+              className={card}
+              aria-hidden={copy > 0 || undefined}
+              tabIndex={copy > 0 ? -1 : undefined}
+            >
+              <span className="relative z-[1] block w-full aspect-[236/299] overflow-hidden rounded-[999px] [box-shadow:0_10px_25px_rgba(16,26,44,0.12)]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={d.image_url} alt={d.name} loading="lazy" className="w-full h-full object-cover [transition:transform_0.8s_ease] group-hover/card:scale-[1.08]" />
+                <span className="absolute inset-x-0 bottom-0 h-[45%] bg-[linear-gradient(to_top,rgba(16,26,44,0.45),transparent)]" />
+                <span className="absolute left-[50%] bottom-[22px] px-[14px] py-[6px] rounded-[20px] bg-orange text-white text-[12px] font-semibold leading-[12px] whitespace-nowrap [transform:translateX(-50%)]">
+                  {d.listings_count} {d.listings_count === 1 ? "Package" : "Packages"}
                 </span>
-                <span className="relative z-[1] flex flex-[0_0_90px] flex-col items-center justify-center pt-0 leading-[1.2]">
-                  <small className="mb-[4px] text-orange text-[12px] font-semibold leading-[16px] tracking-[0.8px] uppercase">{d.subtitle}</small>
-                  <h3
-                    className={cx(
-                      d.name.length > 11 ? "text-[18px]" : "text-[22px]",
-                      "[transition:color_0.35s_ease] group-hover/card:text-white",
-                      blue && "text-white"
-                    )}
-                  >
-                    {d.name}
-                  </h3>
-                </span>
-              </Link>
-            );
-          }))}
+              </span>
+              <span className="relative z-[1] flex h-[104px] flex-col items-center justify-center px-[20px] text-center max767:h-[84px] max767:px-[10px]">
+                <small className="block mb-[6px] text-blue text-[12px] font-semibold leading-[14px] tracking-[0.8px] uppercase [transition:color_0.35s_ease] group-hover/card:text-white/80">{d.subtitle}</small>
+                <h3 className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap text-navy text-[22px] leading-[1.2] [transition:color_0.35s_ease] group-hover/card:text-white max767:text-[17px]">
+                  {d.name}
+                </h3>
+              </span>
+            </Link>
+          )))}
           </div>
         </div>
       </div>

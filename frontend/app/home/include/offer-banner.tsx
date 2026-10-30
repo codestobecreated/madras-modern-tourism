@@ -21,7 +21,7 @@ export default function OfferBanner() {
           <p className="mb-[30px] [color:rgba(241,241,241,0.99)] text-[16px] font-medium leading-[30px]">
             Get up to 50% off on hand-picked Tamil Nadu packages when you book this season.
           </p>
-          <Link href="/tours-page" className={btnWhite}>Start Booking</Link>
+          <Link href="/book-now" className={btnWhite}>Start Booking</Link>
           {/* plane sits behind the copy, like the reference */}
           <img
             className="absolute z-[-1] left-[170px] top-[265px] w-[437px] max-w-none max1024:left-auto max1024:top-auto max1024:right-[-10px] max1024:bottom-[70px] max1024:w-[140px]"

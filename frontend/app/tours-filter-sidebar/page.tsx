@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SiteShell from "../home/include/site-shell";
-import { container, section } from "../home/include/ui";
+import { container, cx, section } from "../home/include/ui";
 import FilterTours from "./include/filter-tours";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ToursFilterSidebarPage() {
   return (
     <SiteShell current="/tours-page" title="Tours">
-      <section className={section}>
+      <section className={cx(section, "!pt-[50px] max1024:!pt-[40px] max767:!pt-[32px]")}>
         <div className={container}>
           <FilterTours />
         </div>

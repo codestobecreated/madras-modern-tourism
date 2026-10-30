@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { priceFor, type TourDetail } from "../../home/include/catalog";
+import { inr } from "../../home/include/data";
 
-export const fmtPrice = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+export const fmtPrice = inr;
 
 export const fmtDate = (iso: string) =>
   iso ? new Date(`${iso}T00:00:00`).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "Not selected";
@@ -21,7 +22,7 @@ export default function OrderSummary({ tour: t, date, guests }: { tour: TourDeta
         <div className={row}><span>Duration</span><span className="text-navy font-medium">{t.duration}</span></div>
         <div className={row}><span>Date</span><span className="text-navy font-medium">{fmtDate(date)}</span></div>
         <div className={row}><span>Guests</span><span className="text-navy font-medium">{guests}</span></div>
-        <div className={row}><span>{fmtPrice(each)} × {guests}</span><span className="text-navy font-medium">{fmtPrice(each * guests)}</span></div>
+        {each > 0 && <div className={row}><span>{fmtPrice(each)} × {guests}</span><span className="text-navy font-medium">{fmtPrice(each * guests)}</span></div>}
         <div className="flex justify-between pt-[15px] text-[18px]">
           <strong className="text-navy">Total</strong>
           <strong className="text-navy">{fmtPrice(each * guests)}</strong>
