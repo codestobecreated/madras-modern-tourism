@@ -6,7 +6,7 @@ import { container, cx, Heading, section } from "../../home/include/ui";
 const faqs = [
   { q: "How do I book a tour?", a: "Open any tour, press Book Now, choose your date and group size and submit the form. You will get a confirmation straight away." },
   { q: "Can I change my travel date?", a: "Yes. Date changes are free up to 48 hours before the start, subject to availability on the new date." },
-  { q: "What is the cancellation policy?", a: "Cancel at least 48 hours before the tour for a full refund. Later cancellations are refunded at 50%." },
+  { q: "What is the cancellation policy?", a: "Cancellation charges depend on how many days before departure you cancel. Visa fees and some flights or peak-season hotels are non-refundable. See our Refund Policy page for full details." },
   { q: "Are entry tickets included?", a: "Most tours include entry tickets, a guide and pick-up. Each tour page lists exactly what is included and excluded." },
   { q: "Do you run private tours?", a: "Every tour can be booked as a private trip for your group. Contact us with your dates and we will send a quote." },
   { q: "Which languages do your guides speak?", a: "All guides speak English and Tamil; Hindi, French and German guides are available on request." },
@@ -17,7 +17,7 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className={section}>
+    <section id="faq" className={cx(section, "scroll-mt-[90px]")}>
       <div className={cx(container, "max-w-[900px]")}>
         <Heading tag="FAQ" title="Frequently Asked Questions" center />
         <div className="flex flex-col gap-[16px]">

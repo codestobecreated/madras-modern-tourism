@@ -8,7 +8,7 @@ const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 /** Short experiences that can be added to any trip; each card leads to the contact form. */
 export default function ActivityGrid() {
   return (
-    <section className={section}>
+    <section className={cx(section, "!pt-[50px] max1024:!pt-[40px] max767:!pt-[32px]")}>
       <div className={container}>
         <Heading
           tag="Activities"

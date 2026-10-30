@@ -88,68 +88,96 @@ export default function TripSearch() {
   return (
     <div className="relative z-[5] mt-[-50px]">
       <div className={container}>
-        <form ref={ref} className={cx(
-            "grid grid-cols-[repeat(4,1fr)_170px] bg-white rounded-[14px]",
+        <form
+          ref={ref}
+          className={cx(
+            "grid grid-cols-[repeat(4,minmax(0,1fr))_170px] gap-[10px] p-[10px] bg-white rounded-[18px] [border:1px_solid_var(--color-line)]",
             shadow,
-            "max1024:grid-cols-[1fr_1fr] max767:grid-cols-[1fr]"
+            "max1024:grid-cols-[1fr_1fr] max767:grid-cols-[1fr] max767:gap-[8px] max767:p-[8px]"
           )}
-          onSubmit={submit}>
-          {fields.map((f, i) => (
-            <div
-              key={f.key}
-              className={cx(
-                "relative flex items-center justify-between gap-[12px] py-[26px] px-[28px] border-r border-r-line cursor-pointer",
-                // 2x2 grid at ≤1024 (top row ruled below, right column unruled), one column at ≤767.
-                i === 1 ? "max1024:[border-right:0]" : "max767:[border-right:0]",
-                i < 2 ? "max1024:border-b max1024:border-b-line" : "max767:border-b max767:border-b-line"
-              )}
-              role="button"
-              tabIndex={0}
-              aria-expanded={open === f.key}
-              onClick={() => setOpen(open === f.key ? null : f.key)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  setOpen(open === f.key ? null : f.key);
-                }
-              }}
-            >
-              <div>
-                <label className="block text-body text-[13px] font-medium leading-[1.3] cursor-pointer">{f.label}</label>
-                <strong className="block text-navy text-[16px] font-semibold leading-[1.5] whitespace-nowrap">{values[f.key]?.label ?? f.placeholder}</strong>
+          onSubmit={submit}
+        >
+          {fields.map((f) => {
+            const active = open === f.key;
+            const picked = values[f.key];
+            return (
+              <div
+                key={f.key}
+                className={cx(
+                  "group/field relative flex items-center gap-[14px] min-w-0 py-[16px] px-[16px] rounded-[12px] cursor-pointer [border:1px_solid_transparent] [transition:background_0.25s_ease,border-color_0.25s_ease,box-shadow_0.25s_ease]",
+                  active
+                    ? "bg-white !border-blue [box-shadow:0_0_0_3px_rgba(1,95,201,0.12)]"
+                    : "bg-soft hover:bg-white hover:!border-line hover:[box-shadow:0_8px_20px_rgba(16,26,44,0.06)]"
+                )}
+                role="button"
+                tabIndex={0}
+                aria-expanded={active}
+                onClick={() => setOpen(active ? null : f.key)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setOpen(active ? null : f.key);
+                  }
+                }}
+              >
+                <span
+                  className={cx(
+                    "inline-flex shrink-0 items-center justify-center w-[44px] h-[44px] rounded-[50%] text-[18px] [transition:background_0.25s_ease,color_0.25s_ease]",
+                    active ? "bg-blue text-white" : "bg-[rgba(1,95,201,0.1)] text-blue group-hover/field:bg-blue group-hover/field:text-white"
+                  )}
+                >
+                  <i className={f.icon} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block mb-[2px] text-blue text-[12px] font-semibold leading-[1.3] tracking-[0.6px] uppercase">{f.label}</span>
+                  <strong className={cx("block overflow-hidden text-ellipsis whitespace-nowrap text-[15px] font-semibold leading-[1.5]", picked ? "text-navy" : "text-body")}>
+                    {picked?.label ?? f.placeholder}
+                  </strong>
+                </span>
+                <i className={cx("fa-solid fa-chevron-down shrink-0 text-[12px] text-body [transition:transform_0.25s_ease]", active && "[transform:rotate(180deg)] text-blue")} />
+                {active && (
+                  <div
+                    className={cx(
+                      "absolute top-[calc(100%+10px)] left-0 right-0 z-10 min-w-[220px] max-h-[280px] overflow-y-auto p-[6px] bg-white rounded-[12px] [border:1px_solid_var(--color-line)]",
+                      shadow
+                    )}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {f.options.length === 0 && <button type="button" className={cx(option, "px-[14px] text-body text-[15px]")} disabled>No options yet</button>}
+                    {f.options.map((o) => {
+                      const selected = picked?.value === o.value;
+                      return (
+                        <button
+                          type="button"
+                          key={o.value}
+                          className={cx(
+                            option,
+                            "flex items-center justify-between gap-[10px] rounded-[8px] [transition:background_0.2s_ease,color_0.2s_ease]",
+                            o.child ? "pr-[14px] pl-[30px] text-[14px]" : "px-[14px] text-[15px]",
+                            selected ? "bg-[rgba(1,95,201,0.08)] text-blue font-semibold" : "text-navy hover:bg-soft hover:text-blue"
+                          )}
+                          onClick={() => {
+                            setValues((v) => ({ ...v, [f.key]: o }));
+                            setOpen(null);
+                          }}
+                        >
+                          {o.label}
+                          {selected && <i className="fa-solid fa-check text-[12px]" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-              <i className={cx(f.icon, "text-orange text-[20px]")} />
-              {open === f.key && (
-                <div className={cx(
-                    "absolute top-[calc(100%+8px)] left-0 right-0 z-10 max-h-[280px] overflow-y-auto py-[10px] bg-white rounded-[12px]",
-                    shadow
-                  )} onClick={(e) => e.stopPropagation()}>
-                  {f.options.length === 0 && <button type="button" className={cx(option, "px-[22px] text-navy text-[15px] hover:text-orange")} disabled>No options yet</button>}
-                  {f.options.map((o) => (
-                    <button
-                      type="button"
-                      key={o.value}
-                      className={cx(
-                        option,
-                        o.child ? "pr-[22px] pl-[38px] text-[14px]" : "px-[22px] text-[15px]",
-                        values[f.key]?.value === o.value ? "text-orange" : "text-navy hover:text-orange"
-                      )}
-                      onClick={() => {
-                        setValues((v) => ({ ...v, [f.key]: o }));
-                        setOpen(null);
-                      }}
-                    >
-                      {o.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <button type="submit" className={cx(
-              "flex items-center justify-center gap-[10px] [border:0] rounded-[0_14px_14px_0] bg-orange text-white text-[17px] font-semibold [transition:background_0.25s_ease] hover:bg-blue hover:!text-white",
-              "max1024:[grid-column:span_2] max1024:p-[20px] max1024:rounded-[0_0_14px_14px] max767:[grid-column:auto]"
-            )}>
+            );
+          })}
+          <button
+            type="submit"
+            className={cx(
+              "flex items-center justify-center gap-[10px] [border:0] rounded-[12px] bg-blue text-white text-[17px] font-semibold [box-shadow:0_10px_20px_rgba(1,95,201,0.25)] [transition:background_0.25s_ease,transform_0.25s_ease] hover:bg-orange hover:!text-white hover:[transform:translateY(-2px)]",
+              "max1024:[grid-column:span_2] max1024:py-[16px] max767:[grid-column:auto]"
+            )}
+          >
             <i className="fa-solid fa-magnifying-glass" /> Search
           </button>
         </form>

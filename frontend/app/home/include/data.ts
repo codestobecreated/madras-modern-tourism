@@ -21,7 +21,6 @@ export const navItems: NavItem[] = [
     children: [
       { label: "Tours Page", href: "/tours-page" },
       { label: "Tours – Filter Sidebar", href: "/tours-filter-sidebar" },
-      { label: "Tours – List View", href: "/tours-list-view" },
     ],
   },
   { label: "Destination", href: "/destination" },
@@ -39,12 +38,15 @@ export const navItems: NavItem[] = [
     children: [
       { label: "About Us", href: "/about" },
       { label: "How It Work", href: "/how-it-work" },
+      { label: "Gallery", href: "/gallery" },
+      { label: "Custom Tour Planner", href: "/custom-tour" },
+      { label: "FAQ", href: "/how-it-work#faq" },
     ],
   },
   {
-    label: "News",
+    label: "Blog",
     href: "/news",
-    children: [{ label: "Latest News", href: "/news" }],
+    children: [{ label: "Latest Posts", href: "/news" }],
   },
   { label: "Contact", href: "/contact" },
 ];
@@ -68,6 +70,9 @@ export const aboutChecks = [
 
 /** Home page image by section folder, e.g. asset("tours/tour-hiker") -> /images/home/tours/tour-hiker.webp */
 export const asset = (path: string) => `/images/home/${path}.webp`;
+
+/** Rupee price; 0 means the package is priced on request. */
+export const inr = (n: number) => (n > 0 ? `₹${n.toLocaleString("en-IN")}` : "On request");
 
 export type Tour = {
   slug: string;
@@ -120,10 +125,10 @@ export const testimonials = [
 ];
 
 export const counters = [
-  { value: 30.3, suffix: "k", label: "Happy Traveler", decimals: 1, icon: "fa-solid fa-person-walking-luggage" },
+  { value: 30.3, suffix: "k", label: "Happy Travelers", decimals: 1, icon: "fa-solid fa-person-walking-luggage" },
   { value: 40.5, suffix: "k", label: "Tent Sites", decimals: 1, icon: "fa-solid fa-campground" },
   { value: 88.9, suffix: "%", label: "Satisfaction Rate", decimals: 1, icon: "fa-solid fa-thumbs-up" },
-  { value: 6.3, suffix: "+", label: "Year Of Service", decimals: 2, icon: "fa-solid fa-headset" },
+  { value: 6.3, suffix: "+", label: "Years of Service", decimals: 2, icon: "fa-solid fa-headset" },
 ];
 
 export const gallery = [
@@ -161,13 +166,13 @@ export const footerLinks = {
     { label: "Destinations", href: "/destination" },
     { label: "Tour Activities", href: "/activities" },
     { label: "Tour Types", href: "/tour-types" },
-    { label: "How It Work", href: "/how-it-work" },
+    { label: "Custom Tour Planner", href: "/custom-tour" },
   ],
   Explore: [
     { label: "About", href: "/about" },
-    { label: "Our Team", href: "/about" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Testimonials", href: "/#testimonials" },
-    { label: "Latest News", href: "/news" },
+    { label: "Blog", href: "/news" },
     { label: "Contact Now", href: "/contact" },
   ],
 };

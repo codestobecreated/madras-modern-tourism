@@ -153,7 +153,7 @@ export default function Header({ current = "/" }: { current?: string }) {
             </button>
             <button className={cx(barIcon, "text-[18px] max1024:w-[42px] max1024:h-[42px]")} aria-label="Search"><i className="fa-solid fa-magnifying-glass" /></button>
             <Link
-              href="/tours-page"
+              href="/book-now"
               className="inline-flex items-center gap-[10px] pt-[12px] px-[16px] pb-[15px] [border:0] rounded-[30px] bg-orange !text-white text-[15px] font-semibold leading-none whitespace-nowrap hover:bg-blue hover:[transform:translateY(-2px)] max1024:hidden hover:!text-white"
             >
               Start Booking
@@ -206,7 +206,7 @@ export default function Header({ current = "/" }: { current?: string }) {
               </div>
             ))}
           </nav>
-          <Link href="/tours-page" className={btn} style={{ marginTop: 24 }}>Start Booking</Link>
+          <Link href="/book-now" className={btn} style={{ marginTop: 24 }}>Start Booking</Link>
         </div>
       </div>
     </header>

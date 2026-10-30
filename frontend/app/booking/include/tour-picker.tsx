@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { allTours } from "../../home/include/catalog";
+import { inr } from "../../home/include/data";
 import { Heading } from "../../home/include/ui";
-
-const fmt = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 /** Shown when /booking has no (or an unknown) tour: pick one to continue. */
 export default function TourPicker({ missing }: { missing: boolean }) {
@@ -26,7 +25,7 @@ export default function TourPicker({ missing }: { missing: boolean }) {
             <img src={t.image} alt="" loading="lazy" className="w-[80px] h-[80px] shrink-0 rounded-[8px] object-cover" />
             <span className="min-w-0">
               <strong className="block text-navy text-[16px] leading-[1.3]">{t.title}</strong>
-              <span className="block mt-[4px] text-[14px]">{t.duration} · from {fmt(t.price)}</span>
+              <span className="block mt-[4px] text-[14px]">{t.duration} · {t.price > 0 ? `from ${inr(t.price)}` : "price on request"}</span>
             </span>
           </Link>
         ))}

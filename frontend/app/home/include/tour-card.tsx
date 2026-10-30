@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import type { Tour } from "./data";
-import { TourPrice, WishButton } from "./tour-card-parts";
+import { TourMedia, TourPrice, WishButton } from "./tour-card-parts";
 import { cx, reveal } from "./ui";
 
 // Reference: 109x40 pill, 14px/500, 28.8px line-height.
@@ -21,11 +21,14 @@ export function Stars({ rating }: { rating: number }) {
   );
 }
 
-/** Tour card used on the home page and the tour listings; title opens the tour, Book Now opens booking. */
-export default function TourCard({ tour: t, animate = true }: { tour: Tour; animate?: boolean }) {
+/**
+ * Tour card used on the home page and the tour listings; title opens the tour, Book Now opens booking.
+ * Cards in a row share one height: the details box and price sit at the bottom of the card.
+ */
+export default function TourCard({ tour: t, animate = true }: { tour: Tour & { gallery?: string[]; video?: string }; animate?: boolean }) {
   return (
-    <article className={cx(animate && reveal, "rounded-[10px] hover:[transform:none]")}>
-      <div className="relative h-[308px] overflow-hidden rounded-[10px_10px_0_0] bg-[#ccc]">
+    <article className={cx(animate && reveal, "flex h-full flex-col rounded-[10px] hover:[transform:none]")}>
+      <div className="relative h-[308px] shrink-0 overflow-hidden rounded-[10px_10px_0_0] bg-[#ccc]">
         <Link href={`/tours/${t.slug}`}>
           <img src={t.image} alt={t.title} loading="lazy" className="w-full h-full object-cover [transition:transform_0.8s_ease] hover:[transform:scale(1.05)]" />
         </Link>
@@ -34,15 +37,12 @@ export default function TourCard({ tour: t, animate = true }: { tour: Tour; anim
         )}
         <WishButton />
       </div>
-      {/* white body overlaps the photo by 16px; the blue video tab sits on its top edge */}
-      <div className="relative mt-[-16px] p-[30px] rounded-[0_0_10px_10px] bg-white [box-shadow:0_10px_20px_rgba(0,0,0,0.1)]">
-        <span className="absolute top-[-35px] left-[30px] inline-flex items-center w-[87px] h-[36px] pl-[15px] rounded-[10px_10px_0_0] bg-blue text-white text-[16px] [box-shadow:0_10px_20px_rgba(0,0,0,0.1)]">
-          <i className="fa-solid fa-video" aria-hidden />
-          <span className="sr-only">Video</span>
-        </span>
+      {/* white body overlaps the photo by 16px; the blue video/gallery tab sits on its top edge */}
+      <div className="relative flex flex-1 flex-col mt-[-16px] p-[30px] rounded-[0_0_10px_10px] bg-white [box-shadow:0_10px_20px_rgba(0,0,0,0.1)]">
+        <TourMedia title={t.title} images={t.gallery?.length ? t.gallery : [t.image]} video={t.video} />
         <h3 className="mb-[15px] text-[21px] leading-[25.2px]"><Link href={`/tours/${t.slug}`} className="hover:text-orange">{t.title}</Link></h3>
-        <p className="text-[15px] leading-[24px]">{t.text}</p>
-        <div className="mt-[20px] mb-[25px] pt-[18px] px-[18px] pb-[12px] border-[0.8px] border-solid border-[#dfdfdf] rounded-[12px] text-body text-[14px] font-medium leading-[28.8px]">
+        <p className="mb-[20px] text-[15px] leading-[24px]">{t.text}</p>
+        <div className="mt-auto mb-[25px] pt-[18px] px-[18px] pb-[12px] border-[0.8px] border-solid border-[#dfdfdf] rounded-[12px] text-body text-[14px] font-medium leading-[28.8px]">
           <div className="flex items-center gap-[2px] mb-[3px] leading-[20px]">
             <Stars rating={t.rating} />
             <span>{t.rating} ({t.reviews} Reviews)</span>
